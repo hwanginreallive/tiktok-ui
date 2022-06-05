@@ -1,0 +1,15 @@
+.wrapper {
+    width: 100%;
+
+    .container {
+        width: var(--default-layout-width);
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+
+        .content {
+            padding: 24px 0;
+            width: 692px;
+        }
+    }
+}
