@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
     .logo {
     }
 
@@ -94,6 +95,8 @@
         color: rgba(22, 24, 35, 0.5);
     }
     .actions {
+        display: flex;
+        align-items: center;
         .plus {
             width: 17px;
             height: 17px;
@@ -109,11 +112,31 @@
         }
     }
     .more-btn {
-        width: 20px;
+        font-size: 15px;
         padding: 0 4px;
-        display: inline;
+        display: inline-flex;
         margin-left: 16px;
         cursor: pointer;
         background-color: transparent;
+    }
+
+    //current-user
+
+    .action-btn {
+        display: block;
+        margin-left: 16px;
+        cursor: pointer;
+        padding: 3px 3px 0;
+        position: relative;
+        font-size: 2rem;
+        color: #161823;
+    }
+    .user-avt {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-left: 24px;
+        background-size: cover;
+        cursor: pointer;
     }
 }

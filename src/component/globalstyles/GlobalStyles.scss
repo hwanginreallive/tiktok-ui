@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;550;600;700&display=swap');
 
 :root {
     --primary: #fe2c55;
@@ -32,8 +32,26 @@ input,
 [tabindex] {
     outline: none;
     border: none;
+    background-color: transparent;
 }
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+
+//tippy box
+
+body .tippy-box {
+    background-color: rgba(84, 84, 84, 0.92);
+    font-size: 16px;
+    line-height: 22px;
+}
+body .tippy-arrow {
+    color: rgba(84, 84, 84, 0.92);
+}
+body .tippy-arrow[data-placement^='bottom']::before {
+    top: -8;
+}
+body .tippy-content {
+    padding: 8px 9px;
 }

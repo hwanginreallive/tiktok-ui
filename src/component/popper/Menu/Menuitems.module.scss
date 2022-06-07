@@ -1,17 +1,52 @@
 .menu-list {
-    font-size: 16px;
     width: 223px;
     margin-top: 8px;
+    cursor: pointer;
     button,
     a {
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
         width: 100%;
         display: flex;
         text-align: center;
         justify-content: flex-start;
-        line-height: 22px;
+        line-height: 20px;
         padding: 10px 16px;
         &:hover {
             background: rgba(22, 24, 35, 0.03);
         }
     }
+    &.separate {
+        border-top: 1px solid rgba(22, 34, 25, 0.12);
+    }
+}
+
+//Header
+
+.header {
+    position: relative;
+    height: 50px;
+    &:hover {
+        background-color: white;
+    }
+}
+.back-btn {
+    display: flex;
+    margin-left: 18px;
+    padding: 0 10px;
+    font-size: 17px;
+    height: 100%;
+    background-color: transparent;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    line-height: 22px;
 }
