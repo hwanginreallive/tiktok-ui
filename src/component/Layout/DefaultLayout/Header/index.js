@@ -8,6 +8,7 @@ import PopperWrapper from '~/component/popper/Wrapper';
 import AccountItem from '~/component/AccountIteam';
 import Button from '~/component/Button';
 import Menu from '~/component/popper/Menu';
+import Search from './Search';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -30,6 +31,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
+import { InboxIcon, MessageIcon, SearchIcon } from '~/component/Icons';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 
@@ -65,15 +68,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    });
 
     const handleMenuChange = (MenuItem) => {
         console.log(MenuItem);
@@ -108,36 +103,10 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="tiktok" />
+                    <Image src={images.logo} alt="tiktok" />
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts </h4>
-                                <AccountItem></AccountItem>
-                                <AccountItem></AccountItem>
-                                <AccountItem></AccountItem>
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input type="text" placeholder="Search accounts and videos" spellCheck="false" />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <button>
-                            <FontAwesomeIcon className={cx('loading')} icon={faSpinner}></FontAwesomeIcon>
-                        </button>
+                <Search></Search>
 
-                        <button className={cx('search-button')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
@@ -147,12 +116,13 @@ function Header() {
                             </Button>
                             <Tippy delay={(0, 100)} placement="bottom" content="Message">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faLocationArrow}></FontAwesomeIcon>
+                                    <MessageIcon></MessageIcon>
                                 </button>
                             </Tippy>
                             <Tippy delay={(0, 100)} placement="bottom" content="Inbox">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage}></FontAwesomeIcon>
+                                    <InboxIcon></InboxIcon>
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -169,7 +139,7 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://i.pinimg.com/736x/82/33/47/823347377556e4b2eb3a852b5c02369a.jpg"
                                 className={cx('user-avt')}
                             />
