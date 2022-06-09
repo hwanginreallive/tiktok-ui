@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Menuitems.module.scss';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 
 function Header({ title, onBack }) {
@@ -15,5 +15,10 @@ function Header({ title, onBack }) {
         </header>
     );
 }
+
+Header.prototype = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func,
+};
 
 export default Header;

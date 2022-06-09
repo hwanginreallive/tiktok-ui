@@ -1,37 +1,28 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
-import PopperWrapper from '~/component/popper/Wrapper';
-import AccountItem from '~/component/AccountIteam';
 import Button from '~/component/Button';
 import Menu from '~/component/popper/Menu';
 import Search from './Search';
-
+import routes from '~/configs/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
     faEarthAsia,
     faKeyboard,
     faQuestionCircle,
     faArrowRightToBracket,
-    faMessage,
-    faLocationArrow,
     faUser,
-    faCoins,
-    faLongArrowAltRight,
     faGear,
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
-import { InboxIcon, MessageIcon, SearchIcon } from '~/component/Icons';
+import { InboxIcon, MessageIcon } from '~/component/Icons';
 import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
@@ -102,9 +93,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routes.home} className={cx('logo')}>
                     <Image src={images.logo} alt="tiktok" />
-                </div>
+                </Link>
                 <Search></Search>
 
                 <div className={cx('actions')}>

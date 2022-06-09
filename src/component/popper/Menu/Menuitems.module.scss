@@ -22,22 +22,28 @@
         border-top: 1px solid rgba(22, 34, 25, 0.12);
     }
 }
+.language-list {
+    overflow: hidden auto;
+    height: 100%;
+}
 
 //Header
 
 .header {
     position: relative;
     height: 50px;
+    max-height: 50px;
+    flex-shrink: 0;
     &:hover {
         background-color: white;
     }
 }
 .back-btn {
+    height: 100%;
     display: flex;
     margin-left: 18px;
     padding: 0 10px;
     font-size: 17px;
-    height: 100%;
     background-color: transparent;
     align-items: center;
     cursor: pointer;

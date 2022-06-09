@@ -1,16 +1,16 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Children, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import PopperWrapper from '../Wrapper';
 import styles from './Menuitems.module.scss';
 import Header from './Header';
 import MenuItem from './MenuItem';
-
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
 
     const current = history[history.length - 1];
@@ -37,6 +37,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             delay={[0, 700]}
             offset={[16, 8]}
             interactive
@@ -46,14 +47,13 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     <PopperWrapper>
                         {history.length > 1 && (
                             <Header
-                                className={cx('language')}
-                                title="language"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('language-list')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
@@ -63,5 +63,12 @@ function Menu({ children, items = [], onChange = defaultFn }) {
         </Tippy>
     );
 }
+
+Menu.prototype = {
+    children: PropTypes.node,
+    items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    onChange: PropTypes.func,
+};
 
 export default Menu;
